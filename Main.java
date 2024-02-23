@@ -1,13 +1,10 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        Queue<String> cola = new LinkedList<>();
-        Stack<String> pila = new Stack<>();
+        Cola<String> cola = new Cola<>();
+        Pila<String> pila = new Pila<>();
         Scanner scanner = new Scanner(System.in);
         int opcion;
 
@@ -28,13 +25,13 @@ public class Main {
                 case 1:
                     System.out.print("Ingrese el dato a agregar con cola: ");
                     String datoCola = scanner.nextLine();
-                    cola.add(datoCola);
+                    cola.encolar(datoCola);
                     System.out.println("Dato agregado a la cola: " + datoCola);
                     break;
 
                 case 2:
-                    if (!cola.isEmpty()) {
-                        String datoEliminadoCola = cola.poll();
+                    if (!cola.esVacia()) {
+                        String datoEliminadoCola = cola.desencolar();
                         System.out.println("Dato eliminado de la cola: " + datoEliminadoCola);
                     } else {
                         System.out.println("La cola está vacía.");
@@ -44,13 +41,13 @@ public class Main {
                 case 3:
                     System.out.print("Ingrese el dato a agregar con pila: ");
                     String datoPila = scanner.nextLine();
-                    pila.push(datoPila);
+                    pila.apilar(datoPila);
                     System.out.println("Dato agregado a la pila: " + datoPila);
                     break;
 
                 case 4:
-                    if (!pila.isEmpty()) {
-                        String datoEliminadoPila = pila.pop();
+                    if (!pila.esVacia()) {
+                        String datoEliminadoPila = pila.desapilar();
                         System.out.println("Dato eliminado de la pila: " + datoEliminadoPila);
                     } else {
                         System.out.println("La pila está vacía.");
